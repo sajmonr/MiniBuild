@@ -25,8 +25,14 @@ jobs:
       - name: 'Build project'
         run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
 
+      - name: 'Get version'
+        id: version
+        uses: jasondavis303/net-sdk-proj-file-version
+        with:
+          PROJ_FILE: ${{ env.PROJECT_PATH }}
+
       - name: 'Pack project'
-        run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+        run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }} -p:PackageVersion=${{ steps.version.outputs.ASSEMBLY_VERSION }}
 
       - name: 'Push package'
         run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -s ${{ env.NUGET_SOURCE_URL }} -k ${{ secrets.GITHUB_TOKEN }}
