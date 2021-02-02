@@ -29,7 +29,7 @@ jobs:
         id: version
         uses: jasondavis303/net-sdk-proj-file-version
         with:
-          PROJ_FILE: ${{ env.PROJECT_PATH }}
+          PROJ_FILE: env.PROJECT_PATH
 
       - name: 'Pack project'
         run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }} -p:PackageVersion=${{ steps.version.outputs.ASSEMBLY_VERSION }}
