@@ -3,6 +3,8 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <AssemblyVersion>1.0.1</AssemblyVersion>
+        <RepositoryUrl>https://github.com/sajmonr/MiniBuild</RepositoryUrl>
+        <PackageVersion>1.0.2</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
