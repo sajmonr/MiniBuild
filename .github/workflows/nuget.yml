@@ -3,6 +3,7 @@
 on: ['push']
 
 env:
+  TEST_PROJECT_PATH: 'MiniBuild.Security.Tests/MiniBuild.Security.Tests.csproj'
   PROJECT_PATH: 'MiniBuild.Security/MiniBuild.Security.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_SOURCE_URL: 'https://nuget.pkg.github.com/sajmonr/index.json'
@@ -24,6 +25,9 @@ jobs:
 
       - name: 'Build project'
         run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+
+      - name: 'Test project'
+        run: dotnet test ${{ env.TEST_PROJECT_PATH }}
 
       - name: 'Get version'
         id: version
