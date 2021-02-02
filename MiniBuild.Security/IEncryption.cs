@@ -1,7 +1,8 @@
 ﻿namespace MiniBuild.Security
 {
-    public class IEncryption
+    public interface IEncryption
     {
-        
+        string Encrypt(string text);
+        string Decrypt(string encryptedText);
     }
 }
