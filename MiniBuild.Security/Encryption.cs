@@ -4,6 +4,7 @@ using NETCore.Encrypt;
 [assembly: InternalsVisibleTo("MiniBuild.Security.Tests")]
 namespace MiniBuild.Security
 {
+    //test
     internal class Encryption : IEncryption
     {
         private readonly string _passphrase;
