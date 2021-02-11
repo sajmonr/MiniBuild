@@ -12,7 +12,7 @@ namespace MiniBuild.Security
             _passphrase = passphrase;
         }
 
-        public string Encrypt(string decryptedString) => EncryptProvider.AESEncrypt(decryptedString, _passphrase);
+        public string Encrypt(string text) => EncryptProvider.AESEncrypt(text, _passphrase);
         public string Decrypt(string encryptedText) => EncryptProvider.AESDecrypt(encryptedText, _passphrase);
     }
 }
